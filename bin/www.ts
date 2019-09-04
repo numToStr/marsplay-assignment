@@ -1,9 +1,11 @@
 import fastify from "fastify";
 import { PORT, isDev } from "../config/keys";
 
+import pkg from "../package.json";
+
 const app = fastify({
     logger: {
-        name: "fastify-app",
+        name: pkg.name,
         timestamp: true,
         level: "info",
         prettyPrint: isDev
