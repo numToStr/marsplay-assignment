@@ -1,4 +1,3 @@
-export const PORT = process.env.PORT;
-export const NODE_ENV = process.env.NODE_ENV;
+export const { PORT, NODE_ENV } = process.env;
 
 export const isDev = NODE_ENV !== "production";

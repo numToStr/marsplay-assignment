@@ -31,7 +31,8 @@
         "start": "NODE_ENV=production node bin/www.js",
         "dev": "NODE_ENV=development nodemon -r dotenv/config bin/www.ts",
         "build": "NODE_ENV=production tsc -p .",
-        "tsc": "tsc --init"
+        "tsc": "tsc --init",
+        "lint": "eslint --ext .js,.ts --fix --fix-type suggestion ."
     },
     "keywords": [],
     "author": "",

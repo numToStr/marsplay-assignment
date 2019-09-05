@@ -6,13 +6,20 @@ export const userRoutes: RegisterRoute = (fastify, _, done) => {
         type: "object",
         required: ["email", "password"],
         properties: {
-            email: { type: "string" },
-            password: { type: "string" },
+            email: {
+                type: "string",
+            },
+            password: {
+                type: "string",
+            },
         },
     });
 
     fastify.get("/", async () => {
-        return { user: true, type: "GET" };
+        return {
+            user: true,
+            type: "GET",
+        };
     });
 
     fastify.post(

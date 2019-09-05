@@ -9,12 +9,12 @@ const app = fastify({
         name: pkg.name,
         timestamp: true,
         level: "info",
-        prettyPrint: isDev
-    }
+        prettyPrint: isDev,
+    },
 });
 
 app.register(appRoutes, {
-    prefix: "/api"
+    prefix: "/api",
 });
 
 app.listen(PORT as string, (err: Error, address: string) => {
