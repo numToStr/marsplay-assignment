@@ -1,4 +1,4 @@
-import { RegisterRoute } from "../../@types/route.types";
+import { RegisterRoute } from "../../@types/types";
 
 export const userRoutes: RegisterRoute = (fastify, _, done) => {
     fastify.addSchema({
@@ -7,8 +7,8 @@ export const userRoutes: RegisterRoute = (fastify, _, done) => {
         required: ["email", "password"],
         properties: {
             email: { type: "string" },
-            password: { type: "string" }
-        }
+            password: { type: "string" },
+        },
     });
 
     fastify.get("/", async () => {
@@ -19,14 +19,14 @@ export const userRoutes: RegisterRoute = (fastify, _, done) => {
         "/",
         {
             schema: {
-                body: "login#"
-            }
+                body: "login#",
+            },
         },
         async req => {
             return {
                 user: true,
                 type: "POST",
-                ...req.body
+                ...req.body,
             };
         }
     );
