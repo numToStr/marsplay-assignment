@@ -1,42 +1,19 @@
+import { FastifyRequest } from "fastify";
 import { RegisterRoute } from "../../@types/types";
+import { UserDAL } from "./user.dal";
 
-export const userRoutes: RegisterRoute = (fastify, _, done) => {
-    fastify.addSchema({
-        $id: "login",
-        type: "object",
-        required: ["email", "password"],
-        properties: {
-            email: {
-                type: "string",
-            },
-            password: {
-                type: "string",
-            },
-        },
+export const userRoutes: RegisterRoute = async fastify => {
+    fastify.get("/:userID", async (req: FastifyRequest) => {
+        const { userID } = req.params;
+
+        return new UserDAL({
+            _id: userID,
+        }).findOne();
     });
 
     fastify.get("/", async () => {
-        return {
-            user: true,
-            type: "GET",
-        };
+        return new UserDAL().findAll();
     });
 
-    fastify.post(
-        "/",
-        {
-            schema: {
-                body: "login#",
-            },
-        },
-        async req => {
-            return {
-                user: true,
-                type: "POST",
-                ...req.body,
-            };
-        }
-    );
-
-    return done();
+    return true;
 };

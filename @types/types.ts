@@ -7,3 +7,9 @@ export type RegisterRoute = Plugin<
     ServerResponse,
     RegisterOptions<Server, IncomingMessage, ServerResponse>
 >;
+
+export interface DALOptions {
+    select?: string;
+    sort?: object;
+    upsert?: boolean;
+}
